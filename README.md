@@ -73,3 +73,27 @@ docker-compose up --build
 docker-compose up --d
 ```
 
+## Собрать готовый образ
+
+Собрать и запустить контейнеры. Командой сохранить образы:
+
+```bash
+docker save -o webapi-sql.tar webapi-sql:latest
+docker save -o webapi-web.tar webapi-web:latest
+```
+
+На другой машине загрузить образы: 
+
+```bash
+docker load -i webapi-sql.tar
+docker load -i webapi-web.tar
+```
+
+Собрать и запустить контейнеры можно командой:
+
+```bash
+docker-compose up --build
+```
+
+P.S. **ВАЖНО!!!** Обязательно должна быть папка init-db с бэкапом. Также, нужно изменить docker-compose, либо скопировать его из папки Release-docker
+
