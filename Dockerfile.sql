@@ -11,7 +11,7 @@ EXPOSE 1433
 
 CMD /bin/bash -c "\
 /opt/mssql/bin/sqlservr & \
-sleep 5 && \
+sleep 15 && \
 if [ -f /var/opt/mssql/backup/BookstoreDb.bak ]; then \
   /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P \"$SA_PASSWORD\" -Q \"IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'BookstoreDb') \
     BEGIN RESTORE DATABASE [BookstoreDb] FROM DISK = N'/var/opt/mssql/backup/BookstoreDb.bak' \
